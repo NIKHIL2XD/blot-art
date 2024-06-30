@@ -12,17 +12,27 @@ setDocDimensions(width, height);
 // store final lines here
 const finalLines = [];
 
-// create a polyline
-const polyline = [
-  [30, 90],
-  [100, 90],
-  [100, 30],
-  [30, 30],
-  [30, 90]
-];
+const d=50
 
-// add the polyline to the final lines
-finalLines.push(polyline);
+drawLines([
+    [[0, 0], [0, d]],
+    [[0, d], [d, d]],
+    [[d, d], [d, 0]],
+    [[d, 0], [0, 0]]
+])
+
+
+drawLines([
+    [[100, 90], [60, 120]],
+    [[120, 120], [120, 120]],
+    [[d, d], [d, 0]]
+])
+
+const s = 60;
+
+drawLines([
+    [[0, 0], [0, s], [s, s], [s, 0], [0, 0]]
+])
 
 // transform lines using the toolkit
 bt.rotate(finalLines, 45);
