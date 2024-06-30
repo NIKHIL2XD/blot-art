@@ -23,6 +23,14 @@ t.forward(size)
 
 drawLines(t.lines())
 
+const shape = (n, size) => {
+  const t = new bt.Turtle()
+  for (let i = 0; i < n; i++) t.forward(size).right(360/n)
+  return t.lines()
+}
+
+drawLines(shape(3, 120))  // triangle with 120mm sides
+drawLines(shape(5, 80))
 
 drawLines([
     [[45, 20],[70, 20]],
