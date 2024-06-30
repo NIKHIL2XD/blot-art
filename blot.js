@@ -12,28 +12,26 @@ setDocDimensions(width, height);
 // store final lines here
 const finalLines = [];
 
-const d=50
+const t = new bt.Turtle()
+const size = 100
+
+t.forward(size)
+t.left(120)
+t.forward(size)
+t.left(120)
+t.forward(size)
+
+drawLines(t.lines())
+
 
 drawLines([
-    [[0, 0], [0, d]],
-    [[0, d], [d, d]],
-    [[d, d], [d, 0]],
-    [[d, 0], [0, 0]]
-])
-
-
-drawLines([
-    [[100, 90], [60, 120]],
-    [[120, 120], [120, 120]],
-    [[d, d], [d, 0]]
-])
-
-const s = 60;
-
-drawLines([
-    [[0, 0], [0, s], [s, s], [s, 0], [0, 0]]
-])
-
+    [[45, 20],[70, 20]],
+    [[45, 20],[41, 37]],
+    [[70, 20],[74, 37]],
+    [[41, 37],[57.5, 50]],
+    [[74, 37],[57.5, 50]]  
+  ])
+    
 // transform lines using the toolkit
 bt.rotate(finalLines, 45);
 
