@@ -12,33 +12,34 @@ setDocDimensions(width, height);
 // store final lines here
 const finalLines = [];
 
+const shth = 3  // shaft thickness
+const shl = 120  // shaft length
+const cl = 30  // calamus length (part without vanes)
+const vw = 20  // vane width, per vane
 const t = new bt.Turtle()
-const size = 100
 
-t.forward(size)
-t.left(120)
-t.forward(size)
-t.left(120)
-t.forward(size)
+// start pointing diagonally, and further within drawing area
+t.left(45).jump([20, 20])
+
+// draw the shaft
+t.forward(shl).left(90).forward(shth).left(90)
+t.forward(shl).left(90).forward(shth).left(90)
+
+// move to start of vanes
+t.up().forward(cl).left(90).forward(shth/2).right(90).down()
+
+// draw vanes
+const short = vw * Math.sqrt(2)
+const long = shl - cl - 2 * vw
+
+t.left(45)
+t.forward(short).right(45).forward(long).right(45).forward(short)
+.right(90)
+t.forward(short).right(45).forward(long).right(45).forward(short)
 
 drawLines(t.lines())
 
-const shape = (n, size) => {
-  const t = new bt.Turtle()
-  for (let i = 0; i < n; i++) t.forward(size).right(360/n)
-  return t.lines()
-}
 
-drawLines(shape(3, 120))  // triangle with 120mm sides
-drawLines(shape(5, 80))
-
-drawLines([
-    [[45, 20],[70, 20]],
-    [[45, 20],[41, 37]],
-    [[70, 20],[74, 37]],
-    [[41, 37],[57.5, 50]],
-    [[74, 37],[57.5, 50]]  
-  ])
     
 // transform lines using the toolkit
 bt.rotate(finalLines, 45);
